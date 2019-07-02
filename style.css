@@ -1,0 +1,213 @@
+body {
+    background-color: #568FA6;
+    margin          : inherit;
+}
+
+/* Toolbar */
+.toolbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.toolbar li {
+    float: left;
+}
+
+.toolbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.toolbar li span {
+    font-size : 1rem;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.toolbar li a:hover {
+    background-color: #111;
+}
+
+.toolbar .active {
+    background-color: #4CAF50;
+}
+
+ /* Container  */
+.container {
+    margin-left  : 10vw;
+    margin-right : 10vw;
+    height       : 100%;
+    width        : 80vw;
+    position     : relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.container .card {
+    margin           : 1em;
+    width            : 10rem;
+    height           : 13rem;
+    background-color : #1B3940;
+    border           : solid #E4F2F1 3px;
+    border-radius    : 10%;
+    align-items : center;
+    justify-content : center;
+    position : relative;
+    display: flex;
+}
+
+.container .card .corner {
+    pointer-events:none;
+    font-size : 300%;
+    color : rgb(185, 37, 37);
+}
+
+.container .card .corner:nth-child(1) {
+    position: absolute;
+    top : 1rem;
+    left: 1rem;
+}
+
+.container .card .corner:nth-child(2) {
+    position: absolute;
+    bottom : 1rem;
+    left: 1rem;
+}
+
+.container .card .corner:nth-child(3) {
+    position: absolute;
+    right : 1rem;
+    top: 1rem;
+}
+
+.container .card .corner:nth-child(4) {
+    position: absolute;
+    right : 1rem;
+    bottom: 1rem;
+}
+
+
+
+
+/* .container .card .star.star-right {
+    position : relative;
+    right : -4rem;
+}
+
+.container .card .star.star-bottom-right {
+    position: relative;
+    top: 9rem;
+    right: -1.5rem;
+}
+
+.container .card .star.star-bottom-left {
+    position: relative;
+    bottom: -9rem;
+    left: -8rem;
+}
+
+.container .card .diams {
+    pointer-events:none;
+    font-size : 300%;
+    color : white;
+}
+
+.container .card .diams.diams-middle {
+    position: relative;
+    bottom: -4rem;
+    left: -7rem;
+} */
+
+.container .card-visible .star {
+    display : none;
+}
+
+.container .card-visible .diams {
+    display : none;
+}
+
+.container .card-visible {
+    margin           : 1em;
+    width            : 10rem;
+    height           : 13rem;
+    border           : solid white 3px;
+    background-color : lightgrey;
+    border-radius    : 10%;
+    float : left;
+}
+
+.container .card-visible .card-img {
+    margin : 1rem;
+}
+
+.container .card-visible .card-footer {
+    color : white;
+    font-size : 2rem;
+    text-align : center;
+}
+
+/* Win Modal */
+
+body .win-modal {
+    background: grey;
+    animation: winModalDisplay .25s;
+    width: 50rem;
+    height: 25rem;
+    position: fixed;
+    top: 50%;
+    left: 39%;
+    margin-top: -9em;
+    margin-left: -15em;
+}
+
+@keyframes winModalDisplay {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+}
+
+body .win-modal .win-top {
+    height: 50%;
+    background-color: #4CAF50;
+}
+
+
+body .win-modal .win-bot {
+    height: 50%;
+    background-color: #f3f3f3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+}
+
+body .win-modal .win-top img.tick {
+    margin: auto;
+    width: 15%;
+    display: flex;
+    padding: 2rem;
+}
+
+
+
+body .win-modal .win-bot .win-items {
+    text-align: center;
+}
+body .win-modal .win-bot .win-items img {
+    text-align: center;
+    padding : 0.5rem;
+}
+
+body .win-modal .win-bot .win-items .describe {
+    font-size : 2rem;
+}
