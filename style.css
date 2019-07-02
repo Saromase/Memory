@@ -48,7 +48,7 @@ body {
     height       : 100%;
     width        : 80vw;
     position     : relative;
-    display: grid;
+    display      : grid;
     grid-template-columns: repeat(5, 1fr);
 }
 
@@ -68,7 +68,7 @@ body {
 .container .card .corner {
     pointer-events:none;
     font-size : 300%;
-    color : rgb(185, 37, 37);
+    color : #E4F2F1;
 }
 
 .container .card .corner:nth-child(1) {
@@ -95,43 +95,7 @@ body {
     bottom: 1rem;
 }
 
-
-
-
-/* .container .card .star.star-right {
-    position : relative;
-    right : -4rem;
-}
-
-.container .card .star.star-bottom-right {
-    position: relative;
-    top: 9rem;
-    right: -1.5rem;
-}
-
-.container .card .star.star-bottom-left {
-    position: relative;
-    bottom: -9rem;
-    left: -8rem;
-}
-
-.container .card .diams {
-    pointer-events:none;
-    font-size : 300%;
-    color : white;
-}
-
-.container .card .diams.diams-middle {
-    position: relative;
-    bottom: -4rem;
-    left: -7rem;
-} */
-
-.container .card-visible .star {
-    display : none;
-}
-
-.container .card-visible .diams {
+.container .card-visible .corner {
     display : none;
 }
 

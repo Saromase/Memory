@@ -237,11 +237,6 @@ function createStarDecoration (card)
     starBottomLeft.classList = 'corner';
     starBottomLeft.innerHTML = '&starf;';
     card.appendChild(starBottomLeft);
-
-    // let diams = document.createElement('span');
-    // diams.classList = 'diams diams-middle';
-    // diams.innerHTML = '&diams;';
-    // card.appendChild(diams);
 }
 
 function startTimer ()
