@@ -12,6 +12,8 @@ var Timer = 0;
 
 var ClockTimer;
 
+var LoadImages = [];
+
 var Images = ['001-palm.svg','018-beach.svg','035-leaf.svg',
 '002-iced tea.svg','019-cherries.svg','036-toucan.svg',
 '003-sunglasses.svg','020-sunset.svg','037-flower.svg',
@@ -49,9 +51,14 @@ function createCardDeck ()
 {
     let imageSelected = getRandomInt(1, Images.length);
     let image = Images[imageSelected];
+    let imageSrc = './assets/tropico/' + image;
+    if (!LoadImages[imageSelected]) {
+        LoadImages[imageSelected] = new Image();
+        LoadImages[imageSelected].src = imageSrc;
+    }
 
     let Card = {
-        image       : './assets/tropico/' + image,
+        image       : imageSrc,
         description : image.split('-')[1].split('.')[0]
     }
 
