@@ -8,19 +8,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="toolbar">
-        <ul>
-            <li><span>Memory</span></li>
-            <!-- <li><a href="#news">News</a></li> -->
-            <li style="float:right"><span class="score" id="scoreCount">0</span></li>
-            <li style="float:right"><span class="pair" id="pairCount"></span></li>
-            <li style="float:right"><span id="timer">00:00:00</span></li>
-        </ul>
-    </div>
-    <div class="container" id="memory-container">
+    <div class="container">
+        <div class="menu">
+            <h1>Memory</h1>
+            <ul>
+                <li><a href="memory/index.html" onclick="prepareGame()">Jouer</a></li>
+                <li><span id="configurationMenu">Configuration</span></li>
+            </ul>
+
+            <div class="menu-config">
+                <div class="menu-config-title">
+                    <h2>Configuration Actuelle</h2>
+                </div>
+                <div class="menu-config-label">
+                    <span>Nombres de carte dans le jeux</span>
+                </div>
+                <div class="menu-config-info-number">
+                    <span id="configNumberCards">20</span>
+                </div>
+            </div>
+        </div>
+        <div class="configuration" id="configuration">
+            <h2>Configuration</h2>
+            <div class="options">
+                <div class="option">
+                    <label for="numberCards">Carte dans le jeux : (40 max)</label>
+                    <input type="number" name="numberCards" id="numberCards" step="2" min="0" value="20" max="40">
+                </div>
+                <div class="option-footer">
+                    <button  class="primary" id="saveConfig">Enregister</button>
+                    <button class="secondary" id="resetConfig">Réinitialiser</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-<!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"             title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 </html>
 
-<script src="memory.js"></script>
+<script src="main.js"></script>

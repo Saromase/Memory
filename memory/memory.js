@@ -4,7 +4,7 @@ var CardVisible = 0;
 
 var ScoreCount = 0;
 
-var PairCount = 5;
+var PairCount;
 
 var PairFound = 0;
 
@@ -13,6 +13,12 @@ var Timer = 0;
 var ClockTimer;
 
 var LoadImages = [];
+
+var RootAssets = '../assets/';
+
+var DefaultConfig = {
+    numberCard : 20
+}
 
 var Images = ['001-palm.svg','018-beach.svg','035-leaf.svg',
 '002-iced tea.svg','019-cherries.svg','036-toucan.svg',
@@ -33,6 +39,7 @@ var Images = ['001-palm.svg','018-beach.svg','035-leaf.svg',
 '017-bucket.svg','034-ice cream.svg'];
 
 window.addEventListener('load', function() {
+    getConfig();
     for (let index = 0; index < PairCount; index++) {
         createCardDeck();
     }
@@ -45,13 +52,20 @@ window.addEventListener('load', function() {
     }
 
     document.getElementById('pairCount').innerHTML = PairFound + '/' + PairCount;
-})
+});
+
+function getConfig () {
+    Config = JSON.parse(localStorage.getItem('config'))
+    console.log(Config);
+    PairCount = Config.numberCard / 2 || DefaultConfig.numberCard;
+    console.log(PairCount);
+}
 
 function createCardDeck ()
 {
     let imageSelected = getRandomInt(1, Images.length);
     let image = Images[imageSelected];
-    let imageSrc = './assets/tropico/' + image;
+    let imageSrc = RootAssets + '/tropico/' + image;
     if (!LoadImages[imageSelected]) {
         LoadImages[imageSelected] = new Image();
         LoadImages[imageSelected].src = imageSrc;
@@ -172,7 +186,7 @@ function displayWonModal ()
 
     let tick = document.createElement('img');
     tick.classList = 'tick';
-    tick.src = './assets/checked.svg';
+    tick.src = RootAssets + 'checked.svg';
     tick.alt = 'Checked';
     topModal.appendChild(tick);
     modal.appendChild(topModal);
@@ -184,7 +198,7 @@ function displayWonModal ()
     let clock = document.createElement('div');
     clock.classList = 'win-items';
     let clockIcon = document.createElement('img');
-    clockIcon.src = './assets/clock-circular-outline.svg';
+    clockIcon.src = RootAssets + 'clock-circular-outline.svg';
     clockIcon.alt = 'Clock';
     let clockDescribe = document.createElement('div');
     clockDescribe.classList = 'describe';
@@ -196,7 +210,7 @@ function displayWonModal ()
     let pair = document.createElement('div');
     pair.classList = 'win-items';
     let pairIcon = document.createElement('img');
-    pairIcon.src = './assets/cards.svg';
+    pairIcon.src = RootAssets + 'cards.svg';
     pairIcon.alt = 'Pair';
     let pairDescribe = document.createElement('div');
     pairDescribe.classList = 'describe';
@@ -208,7 +222,7 @@ function displayWonModal ()
     let click = document.createElement('div');
     click.classList = 'win-items';
     let clickIcon = document.createElement('img');
-    clickIcon.src = './assets/click.svg';
+    clickIcon.src = RootAssets + 'click.svg';
     clickIcon.alt = 'click';
     let clickDescribe = document.createElement('div');
     clickDescribe.classList = 'describe';
