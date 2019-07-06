@@ -50,6 +50,13 @@ body {
     position     : relative;
     display      : grid;
     grid-template-columns: repeat(5, 1fr);
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 
 .container .card {
@@ -106,7 +113,7 @@ body {
     border           : solid white 3px;
     background-color : lightgrey;
     border-radius    : 10%;
-    float : left;
+    float            : left;
 }
 
 .container .card-visible .card-img {
@@ -115,7 +122,7 @@ body {
 
 .container .card-visible .card-footer {
     color : white;
-    font-size : 2rem;
+    font-size : 1.5rem;
     text-align : center;
 }
 
