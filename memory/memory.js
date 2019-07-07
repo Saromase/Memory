@@ -18,23 +18,14 @@ var RootAssets = '../assets/';
 
 var DefaultConfig = {
     numberCard : 20,
-    corner     : '&starf;'
-}
-
-var Images = {
-    images : ['palm.svg','beach.svg','leaf.svg','iced_tea.svg','cherries.svg','toucan.svg','sunglasses.svg','sunset.svg','flower.svg','starfish.svg','yatch.svg','popsicle.svg','banana.svg','Pamela.svg','flower.svg','beach_ball.svg','flower.svg','mango.svg','ice_cream.svg','hammock.svg','cocktail.svg','tiki.svg','slippers.svg','Surfboard.svg','dolphin.svg','palm_tree.svg','shell.svg','lemon.svg','coconut.svg','jellyfish.svg','flamingo.svg','sun.svg','wave.svg','shack.svg','macaw.svg','crab.svg','sun_cream.svg','necklace.svg','clown_fish.svg','flower.svg','pineapple.svg','lifesaver.svg','cactus.svg','shell.svg','shirt.svg','volcano.svg','watermelon.svg','compass.svg','bucket.svg','ice_cream.svg'],
-    path : 'tropico'
-}
-
-var FileImage = {
-    images : ['after-effects.svg','avi.svg','csv.svg','dreamweaver.svg','file.svg','fla.svg','indesign.svg','jpg.svg','mp4.svg','png.svg','premiere.svg','search.svg','xls.svg','zip.svg','ai.svg','bridge.svg','dbf.svg','dwg.svg','fireworks.svg','html.svg','iso.svg','json-file.svg','pdf.svg','ppt.svg','psd.svg','svg.svg','xml.svg','audition.svg','css.svg','doc.svg','exe.svg','flash.svg','illustrator.svg','javascript.svg','mp3.svg','photoshop.svg','prelude.svg','rtf.svg','txt.svg','zip-1.svg'],
-    path : 'fileExt'
+    corner     : '&starf;',
+    deck       : 'tropico'
 }
 
 window.addEventListener('load', function() {
     getConfig();
     for (let index = 0; index < PairCount; index++) {
-        createCardDeck(Images.images, Images.path);
+        createCardDeck(Deck.images, Deck.path);
     }
     let tmpCardDeck = CardDeck.slice(0);
     CardDeck = shuffle(CardDeck.concat(tmpCardDeck));
@@ -49,10 +40,27 @@ window.addEventListener('load', function() {
 
 function getConfig () {
     Config = JSON.parse(localStorage.getItem('config'))
+
     PairCount = Config.numberCard / 2 || DefaultConfig.numberCard;
 
     CornerSelected = Config.corner || DefaultConfig.corner;
 
+    Deck = getDeck(Config.deck || DefaultConfig.deck);
+}
+
+function getDeck (deckSelected) {
+    let deck = {
+        "tropico" : {
+            "images" : ["palm.svg","beach.svg","leaf.svg","iced_tea.svg","cherries.svg","toucan.svg","sunglasses.svg","sunset.svg","flower.svg","starfish.svg","yatch.svg","popsicle.svg","banana.svg","Pamela.svg","flower.svg","beach_ball.svg","flower.svg","mango.svg","ice_cream.svg","hammock.svg","cocktail.svg","tiki.svg","slippers.svg","Surfboard.svg","dolphin.svg","palm_tree.svg","shell.svg","lemon.svg","coconut.svg","jellyfish.svg","flamingo.svg","sun.svg","wave.svg","shack.svg","macaw.svg","crab.svg","sun_cream.svg","necklace.svg","clown_fish.svg","flower.svg","pineapple.svg","lifesaver.svg","cactus.svg","shell.svg","shirt.svg","volcano.svg","watermelon.svg","compass.svg","bucket.svg","ice_cream.svg"],
+            "path" : "tropico"
+        },
+        "file-ext" : {
+            "images" : ["after-effects.svg","avi.svg","csv.svg","dreamweaver.svg","file.svg","fla.svg","indesign.svg","jpg.svg","mp4.svg","png.svg","premiere.svg","search.svg","xls.svg","zip.svg","ai.svg","bridge.svg","dbf.svg","dwg.svg","fireworks.svg","html.svg","iso.svg","json-file.svg","pdf.svg","ppt.svg","psd.svg","svg.svg","xml.svg","audition.svg","css.svg","doc.svg","exe.svg","flash.svg","illustrator.svg","javascript.svg","mp3.svg","photoshop.svg","prelude.svg","rtf.svg","txt.svg","zip-1.svg"],
+            "path" : "fileExt"
+        }
+    }
+
+    return deck[deckSelected]
 }
 
 function createCardDeck (images, path)
@@ -60,6 +68,8 @@ function createCardDeck (images, path)
     let imageSelected = getRandomInt(1, images.length);
     let image = images[imageSelected];
     let imageSrc = RootAssets + '/' + path + '/' + image;
+
+    // Preload De l'image
     if (!LoadImages[imageSelected]) {
         LoadImages[imageSelected] = new Image();
         LoadImages[imageSelected].src = imageSrc;

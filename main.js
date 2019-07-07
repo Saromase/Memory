@@ -6,14 +6,17 @@ document.getElementById('resetConfig').addEventListener('click', resetConfigurat
 
 document.getElementById('saveConfig').addEventListener('click', saveConfigurationInput);
 
-document.getElementById('backcard').addEventListener('click', selectedBackCard);
+document.getElementById('backCard').addEventListener('click', selectedBackCard);
+
+document.getElementById('deckCard').addEventListener('click', selectedDeckCard);
 
 createStarDecoration(document.getElementById('configBackCard'), '&starf;')
 
 
 var DefaultConfig = {
     numberCard : 20,
-    corner     : '&starf;'
+    corner     : '&starf;',
+    deck       : 'tropico'
 }
 
 var Config = {};
@@ -51,9 +54,14 @@ function saveConfigurationInput () {
     document.getElementById('configNumberCards').innerHTML = displayNumber(number.value);
 
     // Arriere des cartes
-    let corner = document.getElementsByClassName('selected')[0];
+    let corner = document.querySelector('.backcard > .selected');
     Config.corner = '&' + corner.dataset.backCard + ';';
     createStarDecoration(document.getElementById('configBackCard'), '&' + corner.dataset.backCard + ';')
+
+    // Arriere des cartes
+    let deck = document.querySelector('.deck-card > .selected');
+    Config.deck = deck.dataset.deckCard;
+    displayDeckSelection(deck);
 
 
     let configuration = document.getElementById('configuration');
@@ -77,7 +85,26 @@ function selectedBackCard () {
         return false;
     }
 
-    let previousSelected = document.getElementsByClassName('selected')[0];
+    let previousSelected = document.querySelector('.backcard > .selected');
+    previousSelected.classList.remove('selected');
+
+    card.classList.add('selected');
+}
+
+function selectedDeckCard () {
+    let card = event.target;
+    console.log(event.target);
+    console.log(event);
+
+    if (!card.classList.contains('card')) {
+        card = card.parentNode
+    }
+
+    if (!card.dataset.deckCard) {
+        return false;
+    }
+
+    let previousSelected = document.querySelector('.deck-card > .selected');
     previousSelected.classList.remove('selected');
 
     card.classList.add('selected');
@@ -116,8 +143,16 @@ function createStarDecoration (card, cornerSelected)
     card.appendChild(cornerBottomLeft);
 }
 
+function displayDeckSelection(deckSelected) {
+    let config = document.getElementById('configCardDeck');
 
+    while (config.firstChild) {
+        config.removeChild(config.firstChild);
+    }
 
+    config.appendChild(deckSelected.querySelector('img'))
+    config.appendChild(deckSelected.querySelector('div'))
+}
 
 // Utilities
 function displayNumber (n) {

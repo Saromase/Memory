@@ -29,9 +29,15 @@
                 <div class="menu-config-info-card">
                     <div class="card" id="configBackCard"></div>
                 </div>
+                <div class="menu-config-info-card">
+                    <div class="card deck" id="configCardDeck">
+                        <img src="./assets/tropico/palm_tree.svg" alt="Tropico">
+                        <div class="card-footer">Tropico</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="configuration hidden" id="configuration">
+        <div class="configuration" id="configuration">
             <h2>Configuration</h2>
             <div class="options">
                 <div class="option">
@@ -40,7 +46,7 @@
                 </div>
                 <div class="option-back-card">
                     <h3>Arrière des cartes </h3>
-                    <div class="backcard" id="backcard">
+                    <div class="backcard" id="backCard">
                         <div class="card selected" data-back-card="starf">
                             <span class="corner">&starf;</span>
                             <span class="corner">&starf;</span>
@@ -73,6 +79,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="option-deck-card">
+                    <h3>Choix du jeu de carte </h3>
+                    <div class="deck-card" id="deckCard">
+                        <div class="card selected" data-deck-card="tropico">
+                            <img src="./assets/tropico/palm_tree.svg" alt="Tropico">
+                            <div class="card-footer">Tropico</div>
+                        </div>
+                        <div class="card" data-deck-card="file-ext">
+                            <img src="./assets/fileExt/javascript.svg" alt="file-ext">
+                            <div class="card-footer">Extensions</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="option-footer">
                     <button  class="primary" id="saveConfig">Enregister</button>
                     <button class="secondary" id="resetConfig">Réinitialiser</button>

@@ -117,8 +117,6 @@ body {
 }
 
 .container .menu .menu-config .menu-config-info-card {
-    grid-column: 1;
-    grid-column-end: 3;
     margin: auto;
 }
 
@@ -131,10 +129,6 @@ body {
     background-color : #1B3940;
     border           : solid #E4F2F1 3px;
     border-radius    : 10%;
-}
-
-.container .menu .menu-config .menu-config-info-card .selected {
-    border : solid red 3px;
 }
 
 .container .menu .menu-config .menu-config-info-card .card .corner {
@@ -167,11 +161,32 @@ body {
     bottom: 1rem;
 }
 
+.container .menu .menu-config .menu-config-info-card .card.deck {
+    text-align : center;
+    position : relative;
+    width: 8rem;
+    height: 8rem;
+    background-color : white;
+    margin : auto;
+    background-color : lightgrey;
+    border           : solid #E4F2F1 3px;
+    border-radius    : 10%;
+}
+
+.container .menu .menu-config .menu-config-info-card .card.deck img{
+    width: 75%;
+    height: 75%;
+}
+
+.container .menu .menu-config .menu-config-info-card .card.deck .card-footer{
+    font-size: 1.25rem;
+    color : #1B3940;
+}
 /* Configuration */
 
 .container .configuration {
     width            : 60rem;
-    height           : 40rem;
+    height           : 45rem;
     top              : 10rem;
     left             : 40rem;
     background-color : #6b8186;
@@ -218,7 +233,7 @@ body {
 }
 
 .container .configuration .option-back-card {
-    margin: 3rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -281,6 +296,49 @@ body {
 .container .configuration .option-back-card .backcard .card .corner:nth-child(4) {
     right : 1rem;
     bottom: 1rem;
+}
+
+.container .configuration .option-deck-card .deck-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 0.5rem;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+.container .configuration .option-deck-card h3 {
+    font-size : 1.5rem;
+    color: white;
+    margin: auto;
+}
+
+.container .configuration .option-deck-card .deck-card .card {
+    position : relative;
+    width: 8rem;
+    height: 8rem;
+    background-color : white;
+    margin : auto;
+    background-color : lightgray;
+    border           : solid #E4F2F1 3px;
+    border-radius    : 10%;
+}
+
+.container .configuration .option-deck-card .deck-card .card img {
+    width: 75%;
+    height: 75%;
+}
+
+.container .configuration .option-deck-card .deck-card .card .card-footer {
+    font-size: 1.25rem;
+    color : #1B3940;
+}
+
+.container .configuration .option-deck-card .deck-card .selected {
+    border : solid red 3px;
 }
 
 .container .configuration .option-footer {
