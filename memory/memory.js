@@ -22,7 +22,7 @@ var DefaultConfig = {
 }
 
 var Images = {
-    images : ['palm.svg','beach.svg','leaf.svg','iced tea.svg','cherries.svg','toucan.svg','sunglasses.svg','sunset.svg','flower.svg','starfish.svg','yatch.svg','popsicle.svg','banana.svg','Pamela.svg','flower.svg','beach ball.svg','flower.svg','mango.svg','ice cream.svg','hammock.svg','cocktail.svg','tiki.svg','slippers.svg','Surfboard.svg','dolphin.svg','palm tree.svg','shell.svg','lemon.svg','coconut.svg','jellyfish.svg','flamingo.svg','sun.svg','wave.svg','shack.svg','macaw.svg','crab.svg','sun cream.svg','necklace.svg','clown fish.svg','flower.svg','pineapple.svg','lifesaver.svg','cactus.svg','shell.svg','shirt.svg','volcano.svg','watermelon.svg','compass.svg','bucket.svg','ice cream.svg'],
+    images : ['palm.svg','beach.svg','leaf.svg','iced_tea.svg','cherries.svg','toucan.svg','sunglasses.svg','sunset.svg','flower.svg','starfish.svg','yatch.svg','popsicle.svg','banana.svg','Pamela.svg','flower.svg','beach_ball.svg','flower.svg','mango.svg','ice_cream.svg','hammock.svg','cocktail.svg','tiki.svg','slippers.svg','Surfboard.svg','dolphin.svg','palm_tree.svg','shell.svg','lemon.svg','coconut.svg','jellyfish.svg','flamingo.svg','sun.svg','wave.svg','shack.svg','macaw.svg','crab.svg','sun_cream.svg','necklace.svg','clown_fish.svg','flower.svg','pineapple.svg','lifesaver.svg','cactus.svg','shell.svg','shirt.svg','volcano.svg','watermelon.svg','compass.svg','bucket.svg','ice_cream.svg'],
     path : 'tropico'
 }
 
@@ -98,13 +98,13 @@ function flipCard (cardId)
     
         let imageHTML = document.createElement('img');
         imageHTML.src = CardDeck[cardPosition].image;
-        imageHTML.alt = CardDeck[cardPosition].description;
+        imageHTML.alt = CardDeck[cardPosition].description.replace('_', ' ');
         imageHTML.classList = 'card-img';
         card.appendChild(imageHTML);
     
         let cardFooter = document.createElement('div');
         cardFooter.classList = 'card-footer';
-        let cardFooterText = document.createTextNode(ucFirst(CardDeck[cardPosition].description));
+        let cardFooterText = document.createTextNode(ucFirst(CardDeck[cardPosition].description.replace('_', ' ')));
         cardFooter.appendChild(cardFooterText);
         card.appendChild(cardFooter);
     
@@ -120,13 +120,13 @@ function flipCard (cardId)
     
         let imageHTML = document.createElement('img');
         imageHTML.src = CardDeck[cardPosition].image;
-        imageHTML.alt = CardDeck[cardPosition].description;
+        imageHTML.alt = CardDeck[cardPosition].description.replace('_', ' ');
         imageHTML.classList = 'card-img';
         card.appendChild(imageHTML);
     
         let cardFooter = document.createElement('div');
         cardFooter.classList = 'card-footer';
-        let cardFooterText = document.createTextNode(ucFirst(CardDeck[cardPosition].description));
+        let cardFooterText = document.createTextNode(ucFirst(CardDeck[cardPosition].description.replace('_', ' ')));
         cardFooter.appendChild(cardFooterText);
         card.appendChild(cardFooter);
     
