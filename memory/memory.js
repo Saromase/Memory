@@ -21,7 +21,8 @@ var RootAssets = '../assets/';
 var DefaultConfig = {
     numberCard : 10,
     corner     : '&starf;',
-    deck       : 'tropico'
+    deck       : 'tropico',
+    deleteRows : false
 }
 
 window.addEventListener('load', function() {
@@ -48,6 +49,8 @@ function getConfig () {
     CornerSelected = Config.corner || DefaultConfig.corner;
 
     Deck = getDeck(Config.deck || DefaultConfig.deck);
+
+    DeleteRows = Config.deleteRows || DefaultConfig.deleteRows;
 }
 
 function getDeck (deckSelected) {

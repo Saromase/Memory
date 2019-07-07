@@ -10,13 +10,15 @@ document.getElementById('backCard').addEventListener('click', selectedBackCard);
 
 document.getElementById('deckCard').addEventListener('click', selectedDeckCard);
 
-createStarDecoration(document.getElementById('configBackCard'), '&starf;')
+createStarDecoration(document.getElementById('configBackCard'), '&starf;');
 
+displayRowsConfig(false);
 
 var DefaultConfig = {
     numberCard : 20,
     corner     : '&starf;',
-    deck       : 'tropico'
+    deck       : 'tropico',
+    deleteRows : false
 }
 
 var Config = {};
@@ -37,8 +39,15 @@ function resetConfigurationInput () {
     let number = document.getElementById('numberCards');
     number.value = 20;
     
-    document.getElementsByClassName('selected')[0].classList.remove('selected');
+    document.querySelector('.backcard > .selected').classList.remove('selected')
     document.querySelector('[data-back-card="starf"]').classList.add('selected');
+    
+    document.querySelector('.deck-card > .selected').classList.remove('selected')
+    document.querySelector('[data-deck-card="tropico"]').classList.add('selected');
+
+    let deleteRows = document.getElementById('deleteRows');
+    deleteRows.checked = false;
+
 }
 
 function saveConfigurationInput () {
@@ -52,10 +61,14 @@ function saveConfigurationInput () {
     Config.corner = '&' + corner.dataset.backCard + ';';
     createStarDecoration(document.getElementById('configBackCard'), '&' + corner.dataset.backCard + ';')
 
-    // Arriere des cartes
+    // Theme du jeux de cartes
     let deck = document.querySelector('.deck-card > .selected');
     Config.deck = deck.dataset.deckCard;
     displayDeckSelection(deck);
+
+    let deleteRows = document.getElementById('deleteRows');
+    Config.deleteRows = deleteRows.checked;
+    displayRowsConfig(deleteRows.checked);
 
 
     let configuration = document.getElementById('configuration');
@@ -141,8 +154,18 @@ function displayDeckSelection(deckSelected) {
         config.removeChild(config.firstChild);
     }
 
-    config.appendChild(deckSelected.querySelector('img'))
-    config.appendChild(deckSelected.querySelector('div'))
+    config.appendChild(deckSelected.querySelector('img').cloneNode(true))
+    config.appendChild(deckSelected.querySelector('div').cloneNode(true))
+}
+
+function displayRowsConfig (isActive) {
+    let configMenu = document.getElementById('configDeleteRows');
+
+    if (isActive) {
+        configMenu.innerHTML = 'Suppression des lignes vides';
+    } else {
+        configMenu.innerHTML = 'Pas de suppression des lignes vides';
+    }
 }
 
 // Utilities
