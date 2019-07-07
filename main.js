@@ -6,9 +6,16 @@ document.getElementById('resetConfig').addEventListener('click', resetConfigurat
 
 document.getElementById('saveConfig').addEventListener('click', saveConfigurationInput);
 
-var Config = {
-    numberCard : 20
+document.getElementById('backcard').addEventListener('click', selectedBackCard);
+
+var DefaultConfig = {
+    numberCard : 20,
+    corner     : '&starf;'
 }
+
+var Config = {};
+
+
 
 
 function displayConfiguration () {
@@ -26,13 +33,23 @@ function displayConfiguration () {
 function resetConfigurationInput () {
     let number = document.getElementById('numberCards');
     number.value = 20;
+    
+    document.getElementsByClassName('selected')[0].classList.remove('selected');
+    document.querySelector('[data-back-card="starf"]').classList.add('selected');
+
+
+
 }
 
 function saveConfigurationInput () {
+    // Nombre de carte
     let number = document.getElementById('numberCards');
     Config.numberCard = number.value;
-    document.getElementById('configNumberCards').innerHTML = number.value;
+    document.getElementById('configNumberCards').innerHTML = displayNumber(number.value);
 
+    // Arriere des cartes
+    let corner = document.getElementsByClassName('selected')[0];
+    Config.corner = '&' + corner.dataset.backCard + ';';
 
 
     let configuration = document.getElementById('configuration');
@@ -49,8 +66,29 @@ function checkCardsNumber () {
     }
 }
 
-function prepareGame() {
-    console.log(Config);
-    localStorage.setItem('config', JSON.stringify(Config));
+function selectedBackCard () {
+    let card = event.target;
+
+    if (!card.dataset.backCard) {
+        return false;
+    }
+
+    let previousSelected = document.getElementsByClassName('selected')[0];
+    previousSelected.classList.remove('selected');
+
+    card.classList.add('selected');
 }
 
+function prepareGame() {
+    console.log(Config, DefaultConfig);
+    let config = Config || DefaultConfig;
+    localStorage.setItem('config', JSON.stringify(config));
+}
+
+
+
+
+// Utilities
+function displayNumber (n) {
+    return (n < 10 ? '0' : '') + n;
+}

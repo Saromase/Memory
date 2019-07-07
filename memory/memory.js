@@ -17,7 +17,8 @@ var LoadImages = [];
 var RootAssets = '../assets/';
 
 var DefaultConfig = {
-    numberCard : 20
+    numberCard : 20,
+    corner     : '&starf;'
 }
 
 var Images = ['001-palm.svg','018-beach.svg','035-leaf.svg',
@@ -51,14 +52,15 @@ window.addEventListener('load', function() {
         createCard(index);
     }
 
-    document.getElementById('pairCount').innerHTML = PairFound + '/' + PairCount;
+    document.getElementById('pairCount').innerHTML = displayNumber(PairFound) + ' / ' + displayNumber(PairCount);
 });
 
 function getConfig () {
     Config = JSON.parse(localStorage.getItem('config'))
-    console.log(Config);
     PairCount = Config.numberCard / 2 || DefaultConfig.numberCard;
-    console.log(PairCount);
+
+    CornerSelected = Config.corner || DefaultConfig.corner;
+
 }
 
 function createCardDeck ()
@@ -143,7 +145,7 @@ function flipCard (cardId)
         CardVisible = 0;
 
         ScoreCount++;
-        document.getElementById('scoreCount').innerHTML = ScoreCount;
+        document.getElementById('scoreCount').innerHTML = displayNumber(ScoreCount);
     }
 
 }
@@ -158,7 +160,7 @@ function checkCards (firstCard, card)
         card.style.visibility = 'hidden';
 
         PairFound++;
-        document.getElementById('pairCount').innerHTML = PairFound + '/' + PairCount 
+        document.getElementById('pairCount').innerHTML = displayNumber(PairFound) + ' / ' + displayNumber(PairCount) 
         if (PairFound === PairCount) {
             clearInterval(ClockTimer);
             displayWonModal();
@@ -214,7 +216,7 @@ function displayWonModal ()
     pairIcon.alt = 'Pair';
     let pairDescribe = document.createElement('div');
     pairDescribe.classList = 'describe';
-    pairDescribe.innerHTML = PairCount;
+    pairDescribe.innerHTML = displayNumber(PairCount);
     pair.appendChild(pairIcon);
     pair.appendChild(pairDescribe);
     botModal.appendChild(pair);
@@ -226,11 +228,10 @@ function displayWonModal ()
     clickIcon.alt = 'click';
     let clickDescribe = document.createElement('div');
     clickDescribe.classList = 'describe';
-    clickDescribe.innerHTML = ScoreCount;
+    clickDescribe.innerHTML = displayNumber(ScoreCount);
     click.appendChild(clickIcon);
     click.appendChild(clickDescribe);
     botModal.appendChild(click);
-
 
     modal.appendChild(botModal);
 
@@ -239,25 +240,25 @@ function displayWonModal ()
 
 function createStarDecoration (card)
 {
-    let star = document.createElement('span');
-    star.classList = 'corner';
-    star.innerHTML = '&starf;';
-    card.appendChild(star);
+    let corner = document.createElement('span');
+    corner.classList = 'corner';
+    corner.innerHTML = CornerSelected;
+    card.appendChild(corner);
 
-    let starRight = document.createElement('span');
-    starRight.classList = 'corner';
-    starRight.innerHTML = '&starf;';
-    card.appendChild(starRight);
+    let cornerRight = document.createElement('span');
+    cornerRight.classList = 'corner';
+    cornerRight.innerHTML = CornerSelected;
+    card.appendChild(cornerRight);
 
-    let starBottomRight = document.createElement('span');
-    starBottomRight.classList = 'corner';
-    starBottomRight.innerHTML = '&starf;';
-    card.appendChild(starBottomRight);
+    let cornerBottomRight = document.createElement('span');
+    cornerBottomRight.classList = 'corner';
+    cornerBottomRight.innerHTML = CornerSelected;
+    card.appendChild(cornerBottomRight);
 
-    let starBottomLeft = document.createElement('span');
-    starBottomLeft.classList = 'corner';
-    starBottomLeft.innerHTML = '&starf;';
-    card.appendChild(starBottomLeft);
+    let cornerBottomLeft = document.createElement('span');
+    cornerBottomLeft.classList = 'corner';
+    cornerBottomLeft.innerHTML = CornerSelected;
+    card.appendChild(cornerBottomLeft);
 }
 
 function startTimer ()
@@ -302,4 +303,8 @@ function shuffle(array)
 
 function parseSecond (second) {
     return new Date(second * 1000).toISOString().substr(11, 8)
+}
+
+function displayNumber (n) {
+    return (n < 10 ? '0' : '') + n;
 }

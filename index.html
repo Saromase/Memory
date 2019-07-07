@@ -28,12 +28,47 @@
                 </div>
             </div>
         </div>
-        <div class="configuration hidden" id="configuration">
+        <div class="configuration" id="configuration">
             <h2>Configuration</h2>
             <div class="options">
                 <div class="option">
                     <label for="numberCards">Carte dans le jeux : (40 max)</label>
                     <input type="number" name="numberCards" id="numberCards" step="2" min="0" value="20" max="40">
+                </div>
+                <div class="option-back-card">
+                    <h3>Arrière des cartes </h3>
+                    <div class="backcard" id="backcard">
+                        <div class="card selected" data-back-card="starf">
+                            <span class="corner">&starf;</span>
+                            <span class="corner">&starf;</span>
+                            <span class="corner">&starf;</span>
+                            <span class="corner">&starf;</span>
+                        </div>
+                        <div class="card" data-back-card="spades">
+                            <span class="corner">&spades;</span>
+                            <span class="corner">&spades;</span>
+                            <span class="corner">&spades;</span>
+                            <span class="corner">&spades;</span>
+                        </div>
+                        <div class="card" data-back-card="clubs">
+                            <span class="corner">&clubs;</span>
+                            <span class="corner">&clubs;</span>
+                            <span class="corner">&clubs;</span>
+                            <span class="corner">&clubs;</span>
+                        </div>
+                        <div class="card" data-back-card="hearts">
+                            <span class="corner">&hearts;</span>
+                            <span class="corner">&hearts;</span>
+                            <span class="corner">&hearts;</span>
+                            <span class="corner">&hearts;</span>
+                        </div>
+                        <div class="card" data-back-card="diams">
+                            <span class="corner">&diams;</span>
+                            <span class="corner">&diams;</span>
+                            <span class="corner">&diams;</span>
+                            <span class="corner">&diams;</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="option-footer">
                     <button  class="primary" id="saveConfig">Enregister</button>

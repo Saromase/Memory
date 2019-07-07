@@ -122,11 +122,11 @@ body {
     width            : 60rem;
     height           : 40rem;
     top              : 10rem;
-    left : 40rem;
-    background-color : #1B3940;
+    left             : 40rem;
+    background-color : #6b8186;
     border           : solid #E4F2F1 3px;
     border-radius    : 5%;
-    position : absolute;
+    position         : absolute;
 }
 
 .container .configuration h2 {
@@ -164,6 +164,75 @@ body {
     outline : none;
     font-weight: bold;
     font-size : 1.25em;
+}
+
+.container .configuration .option-back-card {
+    margin: 3rem;
+}
+
+
+.container .configuration .option-back-card h3 {
+    font-size : 1.5rem;
+    color: white;
+    margin: auto;
+}
+
+.container .configuration .option-back-card .backcard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-top: 0.5rem;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.container .configuration .option-back-card .backcard .card {
+    position : relative;
+    width: 8rem;
+    height: 8rem;
+    background-color : white;
+    margin : auto;
+    background-color : #1B3940;
+    border           : solid #E4F2F1 3px;
+    border-radius    : 10%;
+}
+
+.container .configuration .option-back-card .backcard .selected {
+    border : solid red 3px;
+}
+
+.container .configuration .option-back-card .backcard .card .corner {
+    pointer-events:none;
+    font-size : 150%;
+    color : #E4F2F1;
+}
+
+.container .configuration .option-back-card .backcard .card .corner:nth-child(1) {
+    position: absolute;
+    top : 1rem;
+    left: 1rem;
+}
+
+.container .configuration .option-back-card .backcard .card .corner:nth-child(2) {
+    position: absolute;
+    bottom : 1rem;
+    left: 1rem;
+}
+
+.container .configuration .option-back-card .backcard .card .corner:nth-child(3) {
+    position: absolute;
+    right : 1rem;
+    top: 1rem;
+}
+
+.container .card .corner:nth-child(4) {
+    position: absolute;
+    right : 1rem;
+    bottom: 1rem;
 }
 
 .container .configuration .option-footer {
