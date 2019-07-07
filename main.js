@@ -21,9 +21,6 @@ var DefaultConfig = {
 
 var Config = {};
 
-
-
-
 function displayConfiguration () {
     let configuration = document.getElementById('configuration');
 
@@ -42,9 +39,6 @@ function resetConfigurationInput () {
     
     document.getElementsByClassName('selected')[0].classList.remove('selected');
     document.querySelector('[data-back-card="starf"]').classList.add('selected');
-
-
-
 }
 
 function saveConfigurationInput () {
@@ -93,8 +87,6 @@ function selectedBackCard () {
 
 function selectedDeckCard () {
     let card = event.target;
-    console.log(event.target);
-    console.log(event);
 
     if (!card.classList.contains('card')) {
         card = card.parentNode
@@ -111,7 +103,6 @@ function selectedDeckCard () {
 }
 
 function prepareGame() {
-    console.log(Config, DefaultConfig);
     let config = Config || DefaultConfig;
     localStorage.setItem('config', JSON.stringify(config));
 }
