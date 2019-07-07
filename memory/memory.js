@@ -10,6 +10,8 @@ var PairFound = 0;
 
 var Timer = 0;
 
+var Row = 0;
+
 var ClockTimer;
 
 var LoadImages = [];
@@ -17,7 +19,7 @@ var LoadImages = [];
 var RootAssets = '../assets/';
 
 var DefaultConfig = {
-    numberCard : 20,
+    numberCard : 10,
     corner     : '&starf;',
     deck       : 'tropico'
 }
@@ -85,9 +87,14 @@ function createCardDeck (images, path)
 
 function createCard (increment)
 {
+    if (increment % 5 === 0) {
+        Row++;
+    }
+
     let cardHTML = document.createElement('div');
     cardHTML.classList = 'card';
-    cardHTML.dataset.deckPosition = increment
+    cardHTML.dataset.deckPosition = increment;
+    cardHTML.dataset.cardRow = Row;
     cardHTML.dataset.cardVisible = false;
     cardHTML.addEventListener('click', function () {flipCard(increment)});
     createStarDecoration(cardHTML);
@@ -161,6 +168,8 @@ function checkCards (firstCard, card)
         card.dataset.cardVisible = false;
         card.style.visibility = 'hidden';
 
+        checkRows(firstCard, card);
+
         PairFound++;
         document.getElementById('pairCount').innerHTML = displayNumber(PairFound) + ' / ' + displayNumber(PairCount) 
         if (PairFound === PairCount) {
@@ -177,6 +186,40 @@ function checkCards (firstCard, card)
         card.innerHTML = '';
         card.classList = 'card';
         createStarDecoration(card);
+    }
+}
+
+function hiddenLine (card) {
+    card.style.display = 'none';
+}
+
+function checkRows (firstCard, card) {
+    let rowFirstCard = document.querySelectorAll('[data-card-row="' + firstCard.dataset.cardRow + '"]');
+    let hasVisibleCard = false;
+
+    rowFirstCard.forEach(function (card) {
+        if (!card.style.visibility) {
+            hasVisibleCard = true;
+        }
+    });
+
+    if (!hasVisibleCard) {
+        rowFirstCard.forEach(hiddenLine);
+    }
+
+    if (firstCard.dataset.cardRow !== card.dataset.cardRow) {
+        let rowSecondCard = document.querySelectorAll('[data-card-row="' + card.dataset.cardRow + '"]');
+        hasVisibleCard = false;
+
+        rowSecondCard.forEach(function (card) {
+            if (!card.style.visibility) {
+                hasVisibleCard = true;
+            }
+        });
+
+        if (!hasVisibleCard) {
+            rowSecondCard.forEach(hiddenLine);
+        }
     }
 }
 
