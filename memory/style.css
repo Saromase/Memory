@@ -37,10 +37,6 @@ body {
     background-color: #111;
 }
 
-.toolbar .active {
-    background-color: #4CAF50;
-}
-
  /* Container  */
 .container {
     margin-left  : 10vw;

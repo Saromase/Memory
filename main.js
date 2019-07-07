@@ -8,6 +8,9 @@ document.getElementById('saveConfig').addEventListener('click', saveConfiguratio
 
 document.getElementById('backcard').addEventListener('click', selectedBackCard);
 
+createStarDecoration(document.getElementById('configBackCard'), '&starf;')
+
+
 var DefaultConfig = {
     numberCard : 20,
     corner     : '&starf;'
@@ -50,6 +53,7 @@ function saveConfigurationInput () {
     // Arriere des cartes
     let corner = document.getElementsByClassName('selected')[0];
     Config.corner = '&' + corner.dataset.backCard + ';';
+    createStarDecoration(document.getElementById('configBackCard'), '&' + corner.dataset.backCard + ';')
 
 
     let configuration = document.getElementById('configuration');
@@ -83,6 +87,33 @@ function prepareGame() {
     console.log(Config, DefaultConfig);
     let config = Config || DefaultConfig;
     localStorage.setItem('config', JSON.stringify(config));
+}
+
+function createStarDecoration (card, cornerSelected)
+{
+    while (card.firstChild) {
+        card.removeChild(card.firstChild);
+    }
+
+    let corner = document.createElement('span');
+    corner.classList = 'corner';
+    corner.innerHTML = cornerSelected;
+    card.appendChild(corner);
+
+    let cornerRight = document.createElement('span');
+    cornerRight.classList = 'corner';
+    cornerRight.innerHTML = cornerSelected;
+    card.appendChild(cornerRight);
+
+    let cornerBottomRight = document.createElement('span');
+    cornerBottomRight.classList = 'corner';
+    cornerBottomRight.innerHTML = cornerSelected;
+    card.appendChild(cornerBottomRight);
+
+    let cornerBottomLeft = document.createElement('span');
+    cornerBottomLeft.classList = 'corner';
+    cornerBottomLeft.innerHTML = cornerSelected;
+    card.appendChild(cornerBottomLeft);
 }
 
 
