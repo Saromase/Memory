@@ -62,6 +62,10 @@ function getDeck (deckSelected) {
         "file-ext" : {
             "images" : ["after-effects.svg","avi.svg","csv.svg","dreamweaver.svg","file.svg","fla.svg","indesign.svg","jpg.svg","mp4.svg","png.svg","premiere.svg","search.svg","xls.svg","zip.svg","ai.svg","bridge.svg","dbf.svg","dwg.svg","fireworks.svg","html.svg","iso.svg","json-file.svg","pdf.svg","ppt.svg","psd.svg","svg.svg","xml.svg","audition.svg","css.svg","doc.svg","exe.svg","flash.svg","illustrator.svg","javascript.svg","mp3.svg","photoshop.svg","prelude.svg","rtf.svg","txt.svg","zip-1.svg"],
             "path" : "fileExt"
+        },
+        "social" : {
+          "images" : ['badoo.svg','disqus.svg','instagram.svg','rss.svg','vimeo.svg','bebo.svg','dribbble.svg','line.svg','skype.svg','vine.svg','behance.svg','facebook.svg','linkedin.svg','telegram.svg','vk.svg','blogger.svg','flickr.svg','myspace.svg','tumblr.svg','whatsapp.svg','deviantart.svg','forrst.svg','pinterest.svg','twitter.svg','xing.svg','digg.svg','google-plus.svg','plurk.svg','viber.svg','youtube.svg'],
+          "path"   : "social"
         }
     }
 
