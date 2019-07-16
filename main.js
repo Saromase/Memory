@@ -16,13 +16,6 @@ displayRowsConfig(false);
 
 getConfig();
 
-var DefaultConfig = {
-    numberCard : 20,
-    corner     : '&starf;',
-    deck       : 'tropico',
-    deleteRows : false
-}
-
 var Config = {};
 
 function getConfig () {
@@ -49,7 +42,6 @@ function getConfig () {
 
         let deck = document.querySelector('.deck-card > .selected');
         deck.classList.remove('selected');
-        console.log(Config.deck);
         let selectedDeck = document.querySelector('[data-deck-card="' + Config.deck + '"] ')
         selectedDeck.classList.add('selected');
         displayDeckSelection(selectedDeck);
@@ -99,7 +91,6 @@ function saveConfigurationInput () {
 
     // Theme du jeux de cartes
     let deck = document.querySelector('.deck-card > .selected');
-    console.log(deck);
     Config.deck = deck.dataset.deckCard;
     displayDeckSelection(deck);
 
@@ -117,8 +108,8 @@ function saveConfigurationInput () {
 
 function checkCardsNumber () {
     let number = document.getElementById('numberCards');
-    if (number.value > 40) {
-        number.value = 40;
+    if (number.value > 20) {
+        number.value = 20;
     }
     if (number.value % 2 === 1 && number.value.length === 2) {
         number.value = number.value - 1;
