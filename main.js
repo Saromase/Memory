@@ -14,14 +14,42 @@ createStarDecoration(document.getElementById('configBackCard'), '&starf;');
 
 displayRowsConfig(false);
 
-var DefaultConfig = {
-    numberCard : 20,
-    corner     : '&starf;',
-    deck       : 'tropico',
-    deleteRows : false
-}
+getConfig();
 
 var Config = {};
+
+function getConfig () {
+    var DefaultConfig = {
+        numberCard : 20,
+        corner     : '&starf;',
+        deck       : 'tropico',
+        deleteRows : false
+    }
+
+    if (localStorage.getItem('config')) {
+        Config = JSON.parse(localStorage.getItem('config'))
+
+        document.getElementById('configNumberCards').innerHTML = displayNumber(Config.numberCard);
+        document.getElementById('numberCards').value = displayNumber(Config.numberCard);
+
+
+        let corner = document.querySelector('.backcard > .selected');
+        corner.classList.remove('selected');
+        corner = Config.corner.substring(1, Config.corner.length - 1)
+        let selectedCorner = document.querySelector('[data-back-card="' + corner + '"] ')
+        selectedCorner.classList.add('selected');
+        createStarDecoration(document.getElementById('configBackCard'), Config.corner)
+
+        let deck = document.querySelector('.deck-card > .selected');
+        deck.classList.remove('selected');
+        let selectedDeck = document.querySelector('[data-deck-card="' + Config.deck + '"] ')
+        selectedDeck.classList.add('selected');
+        displayDeckSelection(selectedDeck);
+        
+        displayRowsConfig(Config.deleteRows);
+        document.getElementById('deleteRows').checked = Config.deleteRows;
+    }
+}
 
 function displayConfiguration () {
     let configuration = document.getElementById('configuration');
@@ -73,12 +101,15 @@ function saveConfigurationInput () {
 
     let configuration = document.getElementById('configuration');
     configuration.classList.add('hidden');
+
+    localStorage.setItem('config', JSON.stringify(Config));
+
 }
 
 function checkCardsNumber () {
     let number = document.getElementById('numberCards');
-    if (number.value > 40) {
-        number.value = 40;
+    if (number.value > 20) {
+        number.value = 20;
     }
     if (number.value % 2 === 1 && number.value.length === 2) {
         number.value = number.value - 1;
