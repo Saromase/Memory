@@ -162,9 +162,9 @@ function displayRowsConfig (isActive) {
     let configMenu = document.getElementById('configDeleteRows');
 
     if (isActive) {
-        configMenu.innerHTML = 'Suppression des lignes vides';
+        configMenu.innerHTML = 'Suppression automatique des lignes vides';
     } else {
-        configMenu.innerHTML = 'Pas de suppression des lignes vides';
+        configMenu.innerHTML = 'Pas de suppression automatique';
     }
 }
 
